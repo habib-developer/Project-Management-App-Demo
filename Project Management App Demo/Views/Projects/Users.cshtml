@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Project_Management_App_Demo.Models.Domain_Models.UserDM>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h1>@ViewBag.ProductName Users</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="AddUser" asp-route-projectId="@ViewBag.ProjectId">Assign User</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoursPerWeek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RatePerHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoursPerWeek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RatePerHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)<br />
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                <a asp-action="RemoveUser" class="btn btn-danger" asp-route-projectId="@ViewBag.ProjectId" asp-route-userId="@item.UserID">Remove User</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Index" class="btn btn-outline-primary text-primary">Back</a>
+</p>

@@ -1,0 +1,40 @@
+﻿@model Project_Management_App_Demo.Models.Domain_Models.UserDM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Edit User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserID" />
+            <input type="hidden" asp-for="CreatedBy" />
+            <input type="hidden" asp-for="CreatedAt" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoursPerWeek" class="control-label"></label>
+                <input asp-for="HoursPerWeek" class="form-control" />
+                <span asp-validation-for="HoursPerWeek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RatePerHour" class="control-label"></label>
+                <input asp-for="RatePerHour" class="form-control" />
+                <span asp-validation-for="RatePerHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+    <a asp-action="Index" class="btn btn-outline-primary text-primary">Back</a>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

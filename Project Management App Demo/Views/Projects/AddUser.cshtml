@@ -1,0 +1,28 @@
+﻿@model Project_Management_App_Demo.Models.Domain_Models.ProjectUserDM
+
+@{
+    ViewData["Title"] = "AddUser";
+}
+
+<h4>Add Project User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProjectID" />
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label"></label>
+                <select asp-for="UserID" class ="form-control" asp-items="ViewBag.UserID"></select>
+            </div>
+            <div class="form-group">
+                <a asp-action="Users" class="btn btn-outline-primary text-primary" asp-route-id="@Model.ProjectID">Back</a>
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
